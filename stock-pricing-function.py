@@ -8,19 +8,22 @@ def Stock_pricing(array):
 
     lowest_buying = 9999999999 #This number represents infinity.
     highest_selling = 0
+    lowest_day , highest_day = 0, 0
 
     for i in range(len(array)):
 
         if array[i] < lowest_buying and i != (len(array) - 1):
             lowest_buying = array[i]
+            lowest_day = i
 
         if array[i] > highest_selling and i != 0:
             highest_selling = array[i]
+            highest_day = i
 
     maximum_profit = highest_selling - lowest_buying
 
     if maximum_profit > 0:
-        return f"Your maximum profit is {maximum_profit}"
+        return f"Your maximum profit is {maximum_profit}, you should buy on day {lowest_day} and sell on day {highest_day}"
 
     else:
         return f"There is no profit on this market :("
